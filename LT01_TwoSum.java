@@ -1,13 +1,13 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Two_Sum {
+public class LT01_TwoSum {
     public static void main(String[] args) {
        int[] nums = {2,7,11,15};
        int target = 9;
        int[] result_expected = {0,1};
        int[] result_actual=new int[2];
-       Two_Sum driver = new Two_Sum();
+       LT01_TwoSum driver = new LT01_TwoSum();
        result_actual = driver.twoSum(nums,target);
        for(int i=0; i<result_actual.length;i++){
            System.out.println(""+result_actual[i]+"=="+result_expected[i]);

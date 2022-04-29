@@ -1,0 +1,27 @@
+public class LT121_BestTimeToBuyStock {
+    public static void main(String[] args) {
+        LT121_BestTimeToBuyStock driver = new LT121_BestTimeToBuyStock();
+        int result_expected = 5;
+        int[] prices = {7,1,5,3,6,4};
+        int result_actual = driver.maxProfit(prices);
+        System.out.println(result_actual == result_actual);
+
+    }
+    public int maxProfit(int[] prices) {
+        int profit=0;
+        //consider first element is minmum price
+        int minPrice=prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            int currentPrice=prices[i];
+            //calculate currentprofit
+            int currentProfit=currentPrice-minPrice;
+            if(currentPrice > minPrice ){
+                // if it is greater than overall profit then update
+                profit = Math.max(profit, currentProfit);
+            }else {
+                minPrice=currentPrice;
+            }
+        }
+        return profit;
+    }
+}
