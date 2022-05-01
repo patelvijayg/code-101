@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class SubArrays {
+public class PrintSubArrays {
     public static void main(String[] args) {
         List<Integer> comList = Arrays.asList(4,1,2,3,4);
         getCombination(comList);
