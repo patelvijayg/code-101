@@ -14,6 +14,8 @@ public class LT152_MaximumProductSubarray {
         //answer will alwasys include either first or last element (incase of zero value
         //we will discard that part and new first or last wil be used.
         // we will make 2 passes(left to right and right to left)
+        //why we need 2 pass : if some nagative number appear first or mid or last
+        // so result will be vary and may be we can inlcude first nagative or exclude
         for(int i=0; i<nums.length;i++){
             curr=curr*nums[i];
             if(curr>max) max=curr;

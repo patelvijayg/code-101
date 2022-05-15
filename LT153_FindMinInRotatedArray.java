@@ -17,6 +17,7 @@ public class LT153_FindMinInRotatedArray    {
         while(low <= high){
             int mid = low + (high-low)/2;
             int curr = nums[mid];
+            //Check the left and right side of mid and if mismatch then return directly.
             //if mid element greater then mid+1 then break is here because it start decrease from here
             if(curr > nums[mid+1] ){
                 return nums[mid+1];

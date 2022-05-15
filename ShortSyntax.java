@@ -11,6 +11,13 @@ public class ShortSyntax {
         a.remove(0);
         direction4Move();
     }
+    private static void frequecyChar(String s){
+        int[] arr = new int[26];
+        for(int i=0; i<s.length();i++){
+            char c = s.charAt(i);
+            arr[c-'a']++;
+        }
+    }
     private static void direction4Move(){
         int x=1;
         int y=2;
