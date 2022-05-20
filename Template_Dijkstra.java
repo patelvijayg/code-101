@@ -40,6 +40,8 @@ public class Template_Dijkstra {
             System.out.println(curr.vertex + "--"+ curr.pathSoFar);
             result.put(curr.vertex,curr.weight);
             visited.add(curr.vertex);
+            //this the case when some nodes are not inserted because that is the last node
+            //who does not have adjecny with any node. Inshort it will contains only source node
             if(map.containsKey(curr.vertex)) {
                 for (Destination nbr : map.get(curr.vertex)) {
                     if (visited.contains(nbr.vertex) == false) {
@@ -58,7 +60,7 @@ public class Template_Dijkstra {
             curr.add(new Destination(element[DEST],element[WEIGHT],""));  //dest and weight
             map.put(element[SOURCE],curr);
             //incase destination never be source then we need to consider that too.
-            List<Destination> dest = map.getOrDefault(element[DEST],new ArrayList<Destination>());
+            //List<Destination> dest = map.getOrDefault(element[DEST],new ArrayList<Destination>());
             //map.put(element[DEST],dest);
 
         }
