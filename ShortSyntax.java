@@ -1,10 +1,12 @@
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.*;
 
 public class ShortSyntax {
 
     public static void main(String[] args) {
 
-        zigzag(5);
+       // zigzag(5);
     }
     private static void frequecyChar(String s){
         int[] arr = new int[26];
@@ -28,13 +30,19 @@ public class ShortSyntax {
         int x=1;
         int y=2;
         System.out.println("Original x="+x + " y="+y);
-        //4 direction
-        int[][] directions = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
         //8 direction
         int[][] direction8 = new int[][]{{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};
+        //grid
+        int[][] grid = new int[1][1];
+        int m=grid.length,n=grid[0].length;
+        //4 direction
+        int[][] directions = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
         for (int[] dir : directions){
             int newX = x + dir[0];
             int newY = y + dir[1];
+            if(newX<0 || newX>=m || newY<0 || newY>=n || grid[newX][newY] != 1){
+                continue;
+            }
             System.out.println("x="+newX+ " y="+newY);
 
         }
