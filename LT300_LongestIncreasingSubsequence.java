@@ -1,12 +1,15 @@
 import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 
 public class LT300_LongestIncreasingSubsequence {
     public static void main(String[] args) {
         LT300_LongestIncreasingSubsequence driver = new LT300_LongestIncreasingSubsequence();
-        int[] nums = {10,9,2,5,3,7,101,18};
-        int lis =driver.lengthOfLIS(nums);
+        int[] nums = {10,9,2,5,6,7,101,18};
+        int lis =driver.lengthOfLIS1(nums);
         System.out.println(lis);
     }
     ///Using BST we can do it in nlogn
@@ -26,13 +29,28 @@ public class LT300_LongestIncreasingSubsequence {
         return treeSet.size();
     }
 
-
+    public int lengthOfLIS1(int[] nums) {
+        Queue<Integer> queue =new PriorityQueue<>((a,b)->b-a);
+        for (int i = 0; i < nums.length; i++) {
+            Integer cur = nums[i];
+            //we will check if any hiegher value element present than curr
+            //if yes then we need to replace with lower value(curr) so we will get longest increse sequence.
+            //incase there is no higer value then anyway we need to add current value.
+            Integer higherOrEqualValue = queue.size()>0 ? queue.peek() : null;
+            if(higherOrEqualValue != null && higherOrEqualValue>cur){
+                queue.remove();
+            }
+            queue.add(cur);
+        }
+        return queue.size();
+    }
     public int lengthOfLIS2(int[] nums) {
         int len=nums.length;
         int[] dp = new int[len];
         //Fill default value of lis as 1 since any single element is lis itself
         Arrays.fill(dp,1);
 
+        Arrays.asList(dp).stream().collect(Collectors.toList());
         for(int right=1; right<len; right++){
             //left pointer start from beggining till right pointer
             for(int left=0; left<right; left++){

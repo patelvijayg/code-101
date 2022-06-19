@@ -5,7 +5,6 @@ import java.util.*;
 public class ShortSyntax {
 
     public static void main(String[] args) {
-
        // zigzag(5);
     }
     private static void frequecyChar(String s){
@@ -120,4 +119,5 @@ public class ShortSyntax {
         }
         System.out.println(Arrays.toString(dir));
     }
+
 }
