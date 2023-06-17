@@ -7,7 +7,8 @@ public class MatrixChainMultiplication {
         int counts = matmul(mat,1,mat.length-1,dp);
         System.out.println();
         int counts1 = matmul2d(mat2d,0,mat2d.length-1,dp1);
-        System.out.println(counts + " " +counts1);
+        int counts2 = matmuleasy(mat);
+        System.out.println(counts + " " +counts1 +  " "+counts2);
     }
     public static int[][] get2d(int[] arr){
         int[][] tmp = new int[arr.length-1][2];
@@ -17,6 +18,26 @@ public class MatrixChainMultiplication {
         }
 
         return tmp;
+    }
+    public static int matmuleasy(int[] arr){
+        int len=arr.length;
+        int[][] dp = new int[len][len];
+        //start gap from 2 because matrix will be having 2 element like [40, 20] hence we must start with
+        //atleast 3 numbers mean index 2.
+        for(int gap=2; gap<len; gap++){
+            //i,j indicates that we want to make calculation which start from 0 till j position
+            //matrix element.
+            for(int i=0, j=gap; j<len; j++,i++){
+                dp[i][j]=Integer.MAX_VALUE;
+                for(int k=i+1; k<j; k++){
+                    //(i,k) + (k,j) + (matrixmul(i,k,j))
+                    int newval=dp[i][k] + dp[k][j] + arr[i]*arr[k]*arr[j];
+                    dp[i][j] = Math.min(dp[i][j], newval);
+                }
+            }
+
+        }
+        return dp[0][len-1];
     }
     public static int matmul(int[] arr,int i, int j, int[][] dp){
         //assuming that we are partitioning between i position and j position

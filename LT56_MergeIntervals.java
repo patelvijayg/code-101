@@ -42,4 +42,31 @@ public class LT56_MergeIntervals {
         }
         return result;
     }
+
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+        List<int[]> res = new ArrayList();
+        int START=0, END=1;
+        int[] temp = newInterval;
+        for(int[] curr : intervals){
+            //case 1 where arr is totally left side
+            if( curr[END] < temp[START] ){
+                res.add(curr);
+            }else if( curr[START] > temp[END] ){
+                res.add(temp);
+                temp=curr;
+            }else{
+                temp[START] = Math.min(temp[START],curr[START]);
+                temp[END] = Math.max(temp[END],curr[END]);
+            }
+
+        }
+        res.add(temp);
+        res.toArray();
+        int[][] ans = new int[res.size()][2];
+        int j=0;
+        for(int[] in : res){
+            ans[j++]=in;
+        }
+        return ans;
+    }
 }

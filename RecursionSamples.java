@@ -8,8 +8,23 @@ public class RecursionSamples {
         RecursionSamples r = new RecursionSamples();
         int nums[] = {1,2,3};
 
-        List<List<Integer>> ls = r.permutewithspace(nums);
-        System.out.println(ls);
+//        List<List<Integer>> ls = r.permutewithspace(nums);
+//        System.out.println(ls);
+        String s1 = "abc";
+        List<String> res = new ArrayList<>();
+        powerset(s1,0,"",res);
+        System.out.println(res);
+    }
+    public static void powerset(String s,int start, String curr, List<String> res){
+        if(start==s.length()){
+            res.add(curr);
+            return;
+        }
+        //include current item
+        powerset(s,start+1,curr+s.charAt(start),res);
+        //exclude current item
+        powerset(s,start+1,curr,res);
+
     }
 
     public List<List<Integer>> permutewithspace(int[] nums){

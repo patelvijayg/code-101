@@ -50,7 +50,7 @@ public class LT300_LongestIncreasingSubsequence {
         //Fill default value of lis as 1 since any single element is lis itself
         Arrays.fill(dp,1);
 
-        Arrays.asList(dp).stream().collect(Collectors.toList());
+        //Arrays.asList(dp).stream().collect(Collectors.toList());
         for(int right=1; right<len; right++){
             //left pointer start from beggining till right pointer
             for(int left=0; left<right; left++){

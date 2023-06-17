@@ -293,9 +293,10 @@ public class PracticeBS {
         return false;
     }
     public static void testing(){
-        int[] arr={1,3,5,7,9,11,13,15,17,18};
+        int[] arr={-1,-1,0,2,2,2,2,2,3,5,7,9,11,13,15,17,18};
         System.out.println(arr.length);
-        int i=Arrays.binarySearch(arr,20);
-        System.out.println(i);
+        int i=Arrays.binarySearch(arr,2);
+
+        System.out.println("position="+i);
     }
 }

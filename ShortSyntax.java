@@ -1,7 +1,5 @@
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.*;
-
+import java.util.stream.*;
 public class ShortSyntax {
 
     public static void main(String[] args) {
@@ -55,6 +53,15 @@ public class ShortSyntax {
         char[] arrPtr = new char[p.length() + 1];
         System.arraycopy(s.toCharArray(), 0, arrStr, 1, s.length());
         System.arraycopy(p.toCharArray(), 0, arrPtr, 1, p.length());
+
+        //Running sum with first element 0 for calculation
+        int[] nums1 = {10,20,50,15,30,10};
+        int[] nums2=new int[nums1.length+1];
+        nums2[0]=0;
+        for (int i = 1; i <= nums1.length; i++) {
+            nums2[i]=nums2[i-1]+nums2[i-1];
+        }
+
     }
     public static void left_righ_largest(int[] heights){
         //find the left largest and right largest values
@@ -119,5 +126,11 @@ public class ShortSyntax {
         }
         System.out.println(Arrays.toString(dir));
     }
-
+    public static void reverseArray(int[] arr){
+        for (int i = 0; i < (arr.length+1)/2 ; i++) {
+            int tmp=arr[i];
+            arr[i] = arr[arr.length-i-1];
+            arr[arr.length-i-1]=tmp;
+        }
+    }
 }
